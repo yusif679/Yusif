@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    int counter=0;
+    string name;
+    int sizeOf;
+	vector<string> names ;
+	vector<int> sizesOf;
+	
+	while(counter<5)
+	{
+	    cin>>name;
+		names.push_back(name);
+	    counter+=1;
+	    sizeOf=name.length();
+	 	sizesOf.push_back(sizeOf);
+	    
+	}
+	vector<string> names_copy = names;
+	vector<double> sizesOf_index;
+	sort(names.begin(), names.end());
+	for (auto address = names.cbegin(); address != names.cend(); ++address)
+	{
+		auto find_index = find(names_copy.cbegin(), names_copy.cend(), *address);
+		if (find_index != names.end())
+		{
+			sizesOf_index.push_back(distance(names_copy.cbegin(), find_index));
+		}
+	}
+for (unsigned i = 0; i < names.size(); ++i)
+	{
+		cout << names[i] << ", " << sizesOf[sizesOf_index[i]] << '\n';
+	}
+	
+}
